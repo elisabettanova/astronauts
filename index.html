@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Astronauts in space</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+    body {
+      font-family: "Roboto", sans-serif;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul li {
+      width: 450px;
+      padding: 16px;
+      margin: 16px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    h1 {
+      margin: 16px;
+    }
+
+    .astroName {
+      font-weight: 500;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+  </style>
+  <body>
+    <h1>Astronauts in Space</h1>
+
+    <ul id="astronauts">
+    </ul>
+
+    <script type="text/javascript">
+          let people = [
+        { craft: "ISS", name: "Mark Vande Hei" },
+        { craft: "ISS", name: "Oleg Novitskiy" },
+        { craft: "ISS", name: "Pyotr Dubrov" },
+        { craft: "ISS", name: "Thomas Pesquet" },
+        { craft: "ISS", name: "Megan McArthur" },
+        { craft: "ISS", name: "Shane Kimbrough" },
+        { craft: "ISS", name: "Akihiko Hoshide" }
+      ];
+
+      let person = { craft: "ISS", name: "Mark Hei" };
+
+      let astronautsElement = document.getElementById('astronauts');
+
+      let concat = 'Name: ' + person.name + 'Craft:' + person.craft;
+
+      // let astronautTemplate = `Name: ${person.name} Craft: ${person.craft} `;
+
+      let astronautTemplate = `
+      <li>
+        <div class="astroName">${person.name}</div>
+        <div class="astroCraft">${person.craft}</div>
+      </li>
+      `;
+
+      astronautsElement.innerHTML = astronautTemplate;
+
+    </script>
+  </body>
+</html>
