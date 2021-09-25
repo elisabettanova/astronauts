@@ -1,38 +1,9 @@
-const axios = require("axios");
-const http = require("http");
+const http = require('http')
+const fs = require('fs')
 
-let handleRequest = (httpRequest, httpResponse) => {
-  const url = "http://api.open-notify.org/astros.json";
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'content-type': 'text/html' })
+  fs.createReadStream('index.html').pipe(res)
+})
 
-  axios
-  .get(url)
-  .then((axiosResponse) => {
-    let data = axiosResponse.data;
-    let people = data.people;
-
-    httpResponse.writeHead(200, {
-        'Content-Type': 'application/json',
-    });
-
-    httpResponse.write(JSON.stringify(people));
-    httpResponse.end();
-  })
-  .catch((err) => {
-    httpResponse.write("an error happened" + err.message);
-    httpResponse.end();
-  });
-
-}
-
-  /*
-  axios
-    .get(url)
-    .then((axiosResponse) => {
-      let data = axiosResponse.data;
-    })
-    .catch((err) => {
-    });
-};
-*/
-
-http.createServer(handleRequest).listen(8000);
+server.listen(3000)
